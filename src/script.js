@@ -69,7 +69,7 @@ scene.add( gridHelper )
 //Axes Helper
 const axesHelper = new THREE.AxesHelper( 1 );
 axesHelper.position.set(0, 2, 0)
-scene.add( axesHelper );
+scene.add( axesHelper )
 
 
 /**
