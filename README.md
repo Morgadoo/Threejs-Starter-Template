@@ -1,4 +1,4 @@
-# Threejs-Starter-Template
+# Threejs-Template
 Simple Template for Threejs
 
 ## Setup
