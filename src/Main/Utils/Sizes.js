@@ -7,7 +7,7 @@ export default class Sizes{
         this.aspectRatio = this.width / this.height
 
     }
-    updateSize(camera, renderer){
+    updateSize(camera, renderer, labelRenderer){
             this.width = window.innerWidth
             this.height = window.innerHeight
             this.pixelRatio = Math.min(window.devicePixelRatio, 2)
@@ -16,6 +16,9 @@ export default class Sizes{
             camera.updateProjectionMatrix()
             renderer.setSize(this.width, this.height)
             renderer.setPixelRatio(this.pixelRatio)
+
+            labelRenderer.setSize( this.width, this.height );
+
             console.log("Update resize")
     }
 }

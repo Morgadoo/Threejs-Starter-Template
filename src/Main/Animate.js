@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 export default class Animate{
     
-    constructor(scene, camera, renderer, controls){
+    constructor(scene, camera, renderer, labelRenderer, controls){
 
         const clock = new THREE.Clock()
         let lastElapsedTime = 0
@@ -18,6 +18,7 @@ export default class Animate{
 
             // Render
             renderer.render(scene, camera)
+            labelRenderer.render( scene, camera );
 
             // Call tick again on the next frame
             window.requestAnimationFrame(tick)

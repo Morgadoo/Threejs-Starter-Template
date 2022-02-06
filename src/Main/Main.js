@@ -7,6 +7,7 @@ import Geometry from './Geometry'
 import Light from './Light'
 import Renderer from './Renderer'
 import Helpers from './Utils/Helpers'
+import Label from './Utils/Label'
 import Sizes from "./Utils/Sizes"
 import Stats from './Utils/Stats'
 
@@ -26,33 +27,37 @@ export default class Main{
     const scene = new THREE.Scene()
 
     //Sizes
-    this.sizes = new Sizes()
+    const sizes = new Sizes()
     window.addEventListener('resize', () =>{
-        this.sizes.updateSize(this.camera,this.renderer)
+        sizes.updateSize(camera, renderer.renderer , renderer.labelRenderer)
     })
 
     //Camera
-    this.camera = new Camera(this.sizes.width,this.sizes.height,scene)
-
-    // Controls
-    this.controls = new Controls(this.camera, canvas)
+    const camera = new Camera(sizes.width, sizes.height, scene)
 
     //Geometry
-    this.geometry = new Geometry(scene)
+    const geometry = new Geometry(scene)
+    
+    //Label
+    const label = new Label(geometry.cube)
 
     //Helpers
-    this.helpers = new Helpers(scene)
-
+    const helpers = new Helpers(scene)
+    
     //Light
-    this.light = new Light(scene)
+    const light = new Light(scene)
     
     //Renderer
-    this.renderer = new Renderer(canvas,this.sizes.width,this.sizes.height)
+    const renderer = new Renderer(canvas, sizes.width, sizes.height)
+    
+    // Controls
+    const controls = new Controls(camera, canvas , renderer.labelRenderer)
 
     //Animate
-    this.animate = new Animate(scene, this.camera,this.renderer, this.controls)
+    const animate = new Animate(scene, camera, renderer.renderer, renderer.labelRenderer, controls)
 
     //Stats
     const stats = new Stats()
+
     }
 }

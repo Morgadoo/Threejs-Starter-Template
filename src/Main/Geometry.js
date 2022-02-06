@@ -10,6 +10,6 @@ export default class Geometry{
             new THREE.MeshPhysicalMaterial({ color: 0xff0000,reflectivity: 0.8})
         )
         this.cube.position.set(0, 0.5, 0)
-        scene.add(this.cube)
+        scene.add(this.cube)        
     }
 }

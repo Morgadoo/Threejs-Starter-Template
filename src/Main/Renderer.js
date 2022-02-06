@@ -1,4 +1,6 @@
 import * as THREE from 'three'
+import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
+
 
 export default class Renderer{
     
@@ -9,6 +11,15 @@ export default class Renderer{
         })
         this.renderer.setSize(width, height)
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        return this.renderer
+        // document.body.appendChild( this.renderer.domElement );
+
+        this.labelRenderer = new CSS2DRenderer({
+            canvas: canvas,
+            antialias: true,
+        });
+        this.labelRenderer.setSize( width, height );
+        this.labelRenderer.domElement.style.position = 'absolute';
+        this.labelRenderer.domElement.style.top = '0px';
+        document.body.appendChild( this.labelRenderer.domElement );
     }
 }

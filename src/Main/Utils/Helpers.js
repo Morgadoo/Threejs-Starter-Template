@@ -9,8 +9,8 @@ export default class Helpers{
         scene.add( gridHelper )
 
         //Axes Helper
-        const axesHelper = new THREE.AxesHelper( 1 );
-        axesHelper.position.set(0, 2, 0)
+        const axesHelper = new THREE.AxesHelper( 5 );
+        axesHelper.position.set(0, 0, 0)
         scene.add( axesHelper );
     }
 }
