@@ -5,6 +5,7 @@ import Camera from './Camera'
 import Controls from './Controls'
 import Geometry from './Geometry'
 import Light from './Light'
+import Loader from './Loader'
 import Renderer from './Renderer'
 import Helpers from './Utils/Helpers'
 import Label from './Utils/Label'
@@ -26,6 +27,12 @@ export default class Main{
     // Scene
     const scene = new THREE.Scene()
 
+    //Geometry
+    const geometry = new Geometry(scene)
+
+    //Loader
+    const loader = new Loader(scene, geometry.empty_mesh)
+
     //Sizes
     const sizes = new Sizes()
     window.addEventListener('resize', () =>{
@@ -35,14 +42,12 @@ export default class Main{
     //Camera
     const camera = new Camera(sizes.width, sizes.height, scene)
 
-    //Geometry
-    const geometry = new Geometry(scene)
     
     //Label
-    const label = new Label(geometry.cube)
+    // const label = new Label(geometry.empty_mesh, 'Computer')
 
     //Helpers
-    const helpers = new Helpers(scene)
+    // const helpers = new Helpers(scene)
     
     //Light
     const light = new Light(scene)
@@ -58,6 +63,7 @@ export default class Main{
 
     //Stats
     const stats = new Stats()
+
 
     }
 }

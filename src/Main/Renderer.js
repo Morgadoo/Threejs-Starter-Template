@@ -21,5 +21,6 @@ export default class Renderer{
         this.labelRenderer.domElement.style.position = 'absolute';
         this.labelRenderer.domElement.style.top = '0px';
         document.body.appendChild( this.labelRenderer.domElement );
+
     }
 }
