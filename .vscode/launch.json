@@ -15,6 +15,12 @@
             "name": "Run npm",
             "request": "launch",
             "type": "node-terminal"
+        },
+        {
+            "command": "npm run build",
+            "name": "Run build",
+            "request": "launch",
+            "type": "node-terminal"
         }
     ]
 }
