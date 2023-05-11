@@ -19,11 +19,13 @@ export default class Loader{
         var vertexShader = `
         // Define any custom attributes or uniforms here
         varying vec2 vUvs;
+        varying vec3 ourPosition;
         void main() {
-        // Calculate the position of the vertex
 
+        // Calculate the position of the vertex
         gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         vUvs = uv;
+        ourPosition = position;
 
         }
         `;
@@ -32,10 +34,12 @@ export default class Loader{
         var fragmentShader = `
         // Define any custom attributes or uniforms here
         varying vec2 vUvs;
+        varying vec3 ourPosition;
         void main() {
             
         // Set the color of the fragment
-        gl_FragColor = vec4(vUvs.x, 1.0, vUvs.y, 1.0);
+        gl_FragColor = vec4(vUvs.x/ vUvs.y, 0.0, vUvs.y / vUvs.x, 1.0);
+        //gl_FragColor = vec4(ourPosition, 1.0);
         }
         `;
 
@@ -67,11 +71,11 @@ export default class Loader{
 
             },
             function ( xhr ) {
-                let load_bar = Math.round((xhr.loaded / 64495532)*100) + '% loaded';
+                let load_bar = Math.round((xhr.loaded / 64495532)*100) + '% Download';
                 // console.log( load_bar );
                 label.setText(load_bar);
                 if ((xhr.loaded / 64495532)*100 == 100){
-                    label.setText("loading ...");
+                    label.setText("Loading ...");
                     setTimeout(myFunction, 2000);
                 }
             },
